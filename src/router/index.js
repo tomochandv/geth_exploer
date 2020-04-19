@@ -28,7 +28,4 @@ router.get('/address', async (ctx) => {
   await ctx.render('address')
 })
 
-
-
-
 export default router

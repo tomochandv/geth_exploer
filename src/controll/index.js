@@ -45,7 +45,12 @@ const controll = {
       const list = await mongodb.read(address.toLowerCase())
       const balance = await eth.balance(address.toLowerCase())
       await mongodb.mongodb.connection.close()
-      await ctx.render('txids', { list, balance, moment, numeral })
+      await ctx.render('txids', {
+        list,
+        balance,
+        moment,
+        numeral,
+      })
     } catch (err) {
       ctx.status = 500
       console.log(err)
@@ -54,7 +59,12 @@ const controll = {
   getTxid: async (ctx) => {
     const txid = ctx.params.txid
     const info = await eth.getTransaction(txid)
-    await ctx.render('txid', { info, numeral, moment, Bignumber })
+    await ctx.render('txid', {
+      info,
+      numeral,
+      moment,
+      Bignumber,
+    })
   },
   allAddressList: async (ctx) => {
     try {
