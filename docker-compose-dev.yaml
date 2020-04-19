@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  Blockchain:
+    container_name: blockchain
+    image: blockchain-image
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    ports:
+      - 8700:8700
+    networks:
+      - network1
+    volumes: 
+      - ./:/app
+
+  mongodb:
+    container_name: mongo
+    image: mvertes/alpine-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - data:/data/db
+    networks:
+      - network1
+
+volumes:
+  data:
+    driver: local
+
+networks:
+  network1:
+    driver: bridge

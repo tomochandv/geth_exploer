@@ -1,0 +1,52 @@
+<%- include('./header') -%>
+        <div class="col-md-12">
+
+        <div class="col-md-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col" class="text-center">number</th>
+                <th scope="col" class="text-center">hash</th>
+                <th scope="col" class="text-center">miner</th>
+                <th scope="col" class="text-center">size</th>
+                <th scope="col" class="text-center">gasLimit</th>
+                <th scope="col" class="text-center">gasUsed</th>
+                <th scope="col" class="text-center">transactions</th>
+                <th scope="col" class="text-center">timestamp </th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <%- include('./footer') -%>
+    <script>
+      const getBlock = async () => {
+        const data = await axios.get('/block')
+        const list = data.data
+        let html = ''
+        for (let i = 0; i < list.length; i ++) {
+          html += `<tr>
+            <td class="text-center"><a href="/block/${list[i].number}">${list[i].number}</a></td>
+            <td class="text-center">${list[i].hash}</td>
+            <td class="text-center"><a href="/address/${list[i].miner}">${list[i].miner}</a></td>
+            <td class="text-center">${list[i].size}</td>
+            <td class="text-center">${list[i].gasLimit}</td>
+            <td class="text-center">${list[i].gasUsed}</td>
+            <td class="text-center">${list[i].transactions.length}</td>
+            <td class="text-center">${moment.unix(list[i].timestamp).format('YYYY.MM.DD HH:mm:ss')}</td>
+            </tr>`
+        }
+        $('table > tr').fadeIn()
+        $('tbody > tr').remove()
+        $('tbody').append(html)
+        $('table > tr').fadeOut()
+      }
+      getBlock()
+      setInterval(getBlock, 10000)
+
+    </script>
+  </body>
+</html>

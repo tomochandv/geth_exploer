@@ -1,0 +1,43 @@
+<%- include('./header') -%>
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              현재 Balance
+            </div>
+            <div class="card-body">
+              <h5 class="card-title" id="block">
+                <%=numeral(balance).format('0,0.0000000000')%>
+              </h5>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col" class="text-center">txid</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%if (list.length > 0) {
+                for (var i = 0; i < list.length; i++) {
+              %>
+                  <tr>
+                    <td><a href="/txid/<%=list[i].txid%>"><%=list[i].txid%></a></td>
+                    <td><%=moment(list[i].date).add(9, 'h').format('YYYY-MM-DD HH:mm:ss')%></td>
+                  </tr>
+                <%}%>
+              %>
+              <%} else {%>
+                <tr><td colspan="3" class="text-center">No Data</td></tr>
+              <%}%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <%- include('./footer') -%>
+  </body>
+</html>

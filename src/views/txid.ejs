@@ -1,0 +1,57 @@
+<%- include('./header') -%>
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              Block Hash / Hash
+            </div>
+            <div class="card-body" >
+              <h5 class="card-title" id="block">
+               <%=info.blockHash%> / <%=info.hash%>
+              </h5>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-12">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col" class="text-center">From</th>
+                <td><a href="/address/<%=info.from%>"><%=info.from%></a></td>
+              </tr>
+              <tr>
+                <th scope="col" class="text-center">To</th>
+                <td><a href="/address/<%=info.to%>"><%=info.to%></a></td>
+              </tr>
+              <tr>
+                <th scope="col" class="text-center">Value</th>
+                <td><%=numeral(info.value).format('0,0.0000000000')%></td>
+              </tr>
+              <tr>
+                <th scope="col" class="text-center">Gas Limit</th>
+                <td><%=numeral(info.gas).format('0,0')%></td>
+              </tr>
+              <tr>
+                <th scope="col" class="text-center">Gas Price</th>
+                <td><%=numeral(info.gasPrice).format('0,0')%></td>
+              </tr>
+              <tr>
+                <th scope="col" class="text-center">Transaction Fee <%
+                  const gasC = new Bignumber(info.gas).multipliedBy(info.gasPrice)
+                  const decimals = new Bignumber(10).pow(18)
+                  const gas = gasC.dividedBy(decimals)
+                  %></th>
+                <td><%=gas%></td>
+              </tr>
+              <tr>
+                <th scope="col" class="text-center">Input Data</th>
+                <td><%=info.input%></td>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+    <%- include('./footer') -%>
+  </body>
+</html>

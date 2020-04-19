@@ -1,0 +1,54 @@
+<%- include('./header') -%>
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              현재 Block
+            </div>
+            <div class="card-body">
+              <h5 class="card-title" id="block">0</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col" class="text-center">Address</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <%- include('./footer') -%>
+    <script>
+      axios.get('/all').then((data) => {
+        const list = data.data
+        if (list.length > 0) {
+          list.forEach((item) => {
+            const html = `<tr><td>
+              <a href="/address/${item}">
+              ${item}
+              </a>
+              </td></tr>`
+            $('tbody').append(html)
+          })
+        }
+      })
+      const getBlock = async () => {
+        const data = await axios.get('/currentblock')
+        const block = numeral(data.data).format('0,0')
+        const prevBlock = $('#block').html()
+        if ( block !== prevBlock) {
+          $('#block').slideUp()
+          $('#block').html(numeral(data.data).format('0,0'))
+          $('#block').slideDown()
+        }
+      }
+      setInterval(getBlock, 3000)
+    </script>
+  </body>
+</html>

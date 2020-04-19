@@ -1,0 +1,63 @@
+<%- include('./header') -%>
+        <div class="col-md-12">
+          <div class="shadow-lg p-3 mb-5 bg-white rounded font-weight-bold">Block #<%=info.number%></div>
+        </div>
+
+        <div class="col-md-12">
+          <dl class="row">
+            <dt class="col-md-3">hash</dt>
+            <dd class="col-md-9"><%=info.hash%></dd>
+            <dt class="col-md-3">parentHash</dt>
+            <dd class="col-md-9"><%=info.parentHash%></dd>
+            <dt class="col-md-3">nonce</dt>
+            <dd class="col-md-9"><%=info.nonce%></dd>
+            <dt class="col-md-3">sha3Uncles</dt>
+            <dd class="col-md-9"><%=info.sha3Uncles%></dd>
+            <dt class="col-md-3">logsBloom</dt>
+            <dd class="col-md-9"><%=info.logsBloom%></dd>
+            <dt class="col-md-3">transactionsRoot</dt>
+            <dd class="col-md-9"><%=info.transactionsRoot%></dd>
+            <dt class="col-md-3">stateRoot</dt>
+            <dd class="col-md-9"><%=info.stateRoot%></dd>
+            <dt class="col-md-3">miner</dt>
+            <dd class="col-md-9"><%=info.miner%></dd>
+            <dt class="col-md-3">difficulty</dt>
+            <dd class="col-md-9"><%=info.difficulty%></dd>
+            <dt class="col-md-3">totalDifficulty</dt>
+            <dd class="col-md-9"><%=info.totalDifficulty%></dd>
+            <dt class="col-md-3">extraData</dt>
+            <dd class="col-md-9"><%=info.extraData%></dd>
+            <dt class="col-md-3">size</dt>
+            <dd class="col-md-9"><%=info.size%></dd>
+            <dt class="col-md-3">gasLimit</dt>
+            <dd class="col-md-9"><%=info.gasLimit%></dd>
+            <dt class="col-md-3">gasUsed</dt>
+            <dd class="col-md-9"><%=info.gasUsed%></dd>
+            <dt class="col-md-3">timestamp</dt>
+            <dd class="col-md-9"><%=moment.unix(info.timestamp).format('YYYY-MM-DD HH:mm:ss')%></dd>
+            <dt class="col-md-3">transactions</dt>
+            <dd class="col-md-9">
+              <%if(info.transactions.length > 0){%>
+                <%for(let i=0; i < info.transactions.length; i ++) {%>
+                  <dl class="row">
+                    <dd class="col-sm-8"><a target="_blank" href="/txid/<%=info.transactions[i]%>"><%=info.transactions[i]%></a></dd>
+                  </dl>
+                <%}%>
+              <%}%>
+            </dd>
+            <dd class="col-md-9">
+              <%if(info.uncles.length > 0){%>
+                <%for(let i=0; i < info.uncles.length; i ++) {%>
+                  <dl class="row">
+                    <dd class="col-sm-8"><%=info.uncles[i]%></dd>
+                  </dl>
+                <%}%>
+              <%}%>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <%- include('./footer') -%>
+  </body>
+</html>

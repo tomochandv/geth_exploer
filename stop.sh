@@ -1,0 +1,1 @@
+docker-compose stop or docker-compose down
