@@ -1,6 +1,6 @@
 <%- include('./header') -%>
         <div class="col-md-12">
-          <div class="shadow-lg p-3 mb-5 bg-white rounded font-weight-bold">Block #<%=info.number%></div>
+          <div class="shadow-lg p-3 mb-5 bg-white rounded font-weight-bold"><i class="fas fa-cubes"></i> Block #<%=info.number%></div>
         </div>
 
         <div class="col-md-12">
@@ -28,11 +28,11 @@
             <dt class="col-md-3">extraData</dt>
             <dd class="col-md-9"><%=info.extraData%></dd>
             <dt class="col-md-3">size</dt>
-            <dd class="col-md-9"><%=info.size%></dd>
+            <dd class="col-md-9"><%=info.size%> k</dd>
             <dt class="col-md-3">gasLimit</dt>
-            <dd class="col-md-9"><%=info.gasLimit%></dd>
+            <dd class="col-md-9"><%=info.gasLimit%> Gwei</dd>
             <dt class="col-md-3">gasUsed</dt>
-            <dd class="col-md-9"><%=info.gasUsed%></dd>
+            <dd class="col-md-9"><%=info.gasUsed%> Gwei</dd>
             <dt class="col-md-3">timestamp</dt>
             <dd class="col-md-9"><%=moment.unix(info.timestamp).format('YYYY-MM-DD HH:mm:ss')%></dd>
             <dt class="col-md-3">transactions</dt>

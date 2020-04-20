@@ -29,12 +29,13 @@
         let html = ''
         for (let i = 0; i < list.length; i ++) {
           html += `<tr>
-            <td class="text-center"><a href="/block/${list[i].number}">${list[i].number}</a></td>
+            <td class="text-center">
+              <i class="fas fa-cubes"></i> <a href="/block/${list[i].number}">${list[i].number}</a></td>
             <td class="text-center">${list[i].hash}</td>
-            <td class="text-center"><a href="/address/${list[i].miner}">${list[i].miner}</a></td>
-            <td class="text-center">${list[i].size}</td>
-            <td class="text-center">${list[i].gasLimit}</td>
-            <td class="text-center">${list[i].gasUsed}</td>
+            <td class="text-left"><i class="fas fa-barcode"></i> <a href="/address/${list[i].miner}">${list[i].miner}</a></td>
+            <td class="text-center">${list[i].size} k</td>
+            <td class="text-center">${list[i].gasLimit} Gwei</td>
+            <td class="text-center">${list[i].gasUsed} Gwei</td>
             <td class="text-center">${list[i].transactions.length}</td>
             <td class="text-center">${moment.unix(list[i].timestamp).format('YYYY.MM.DD HH:mm:ss')}</td>
             </tr>`

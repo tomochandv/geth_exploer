@@ -1,15 +1,7 @@
 <%- include('./header') -%>
         <div class="col-md-12">
-          <div class="card">
-            <div class="card-header">
-              현재 Balance
-            </div>
-            <div class="card-body">
-              <h5 class="card-title" id="block">
-                <%=numeral(balance).format('0,0.0000000000')%>
-              </h5>
-            </div>
-          </div>
+          <div class="shadow-lg p-3 mb-5 bg-white rounded font-weight-bold">
+            <i class="fas fa-cubes"></i> Balance : <%=numeral(balance).format('0,0.0000000000')%> GP</div>
         </div>
         
         <div class="col-md-12">
@@ -25,7 +17,7 @@
                 for (var i = 0; i < list.length; i++) {
               %>
                   <tr>
-                    <td><a href="/txid/<%=list[i].txid%>"><%=list[i].txid%></a></td>
+                    <td><i class="fas fa-barcode"></i> <a href="/txid/<%=list[i].txid%>"><%=list[i].txid%></a></td>
                     <td><%=moment(list[i].date).add(9, 'h').format('YYYY-MM-DD HH:mm:ss')%></td>
                   </tr>
                 <%}%>
