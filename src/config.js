@@ -9,6 +9,7 @@ const config = {
     local: 'mongodb://mongodb:27017',
     production: 'mongodb://localhost:27017',
   },
+  baseAddress: '0x2beAE63deAf90f6C063518C847EE2E01A348Dc4f',
 }
 
 export default config

@@ -5,11 +5,13 @@ import Mongodb from '../mongodb'
 import Payload from '../mongodb/model'
 import PayloadBlock from '../mongodb/blockModel'
 import eth from '../eth'
+import config from '../config'
 
 const controll = {
   createAddress: async (ctx) => {
     try {
       const address = await eth.createUser()
+      eth.transaction(config.baseAddress, address, '', '10')
       ctx.body = address
     } catch (err) {
       ctx.status = 500

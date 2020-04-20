@@ -1,14 +1,4 @@
 <%- include('./header') -%>
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-header">
-              현재 Block
-            </div>
-            <div class="card-body">
-              <h5 class="card-title" id="block">0</h5>
-            </div>
-          </div>
-        </div>
 
         <div class="col-md-12">
           <table class="table table-striped">
@@ -38,17 +28,6 @@
           })
         }
       })
-      const getBlock = async () => {
-        const data = await axios.get('/currentblock')
-        const block = numeral(data.data).format('0,0')
-        const prevBlock = $('#block').html()
-        if ( block !== prevBlock) {
-          $('#block').slideUp()
-          $('#block').html(numeral(data.data).format('0,0'))
-          $('#block').slideDown()
-        }
-      }
-      setInterval(getBlock, 3000)
     </script>
   </body>
 </html>
